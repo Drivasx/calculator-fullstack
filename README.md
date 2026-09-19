@@ -125,3 +125,18 @@ frontend:
 ![](image.png)
 
 
+
+## Used prompts
+
+AI used: OpenCode
+
+1. "Le estoy pasando los tests al reducer de la calculadora y ya me cubre sumas y restas, pero quiero probar las operaciones haciendo tabla como en Go. En vitest existe algo parecido a los table tests de Go o tengo que escribir un test por operación? y cómo mido la cobertura en el frontend?"
+2. "Cuando el usuario pulsa 5 + y después √ no me queda claro cuándo se lanza la petición a la API. Quiero un test que simule pulsar teclas y espere a que termine la llamada asíncrona antes de mirar el resultado, porque ahora el test termina antes y me da el estado viejo. Cómo lo hago con vi.fn y await?"
+3. "Tengo un test de la calculadora que dice 4 × -6 = -24 pero el -6 va negativo y no sé si el mock del servicio tiene que devolver la multiplicación o si el reducer debería encargarse de los negativos. Como es medio culpa del uno y del otro, no sé dónde ponerme a testear."
+Java → Go (2)
+4. "Vengo de Java y en Spring poníamos un @Service con @RestController y los métodos saltaban excepciones tipo ArithmeticException si dividías entre cero. En Go no veo try-catch. Cómo le explico al resto del código que la división entre cero falló si no hay excepciones? He visto que se devuelve un error como segundo valor, pero no entiendo bien cuándo se usa."
+5. "En Java usaba JUnit con @Test y assertEquals y todo iba en métodos. Ahora en Go los tests van pegados a los archivos y no sé cómo estructurar uno que pruebe varias operaciones de la calculadora sin escribir un test gigante. Me dijeron que Go usa table tests, me puedes enseñar con un ejemplo del Add y del Sqrt?"
+Dudas frontend React (6,7,8)
+6. "Estoy haciendo la calculadora con React y TypeScript y cada vez que pulso una tecla cambia el estado. Lo estoy metiendo todo en un useReducer, pero las operaciones van al backend por fetch y no sé si lo asíncrono lo meto dentro del reducer o fuera. Me da la sensación de que al reducer no le toca esperar una promesa, pero tampoco quiero duplicar la lógica."
+7. "Monté la calculadora así y la puse encima del resultado en una expresión tipo '7 + 3 =', pero noté que cuando pones un número negativo después de un operador (4 × -6) queda todo junto y se lee mal. Quiero encerrar el negativo entre paréntesis en la expresión pero solo cuando va después de un operador, no al principio. Hay forma de saber en el reducer en qué posición va el operando?"
+8. "El porcentaje de la calculadora lo hice como operación unaria que divide entre 100, pero no sé si la parte del frontend que lanza el fetch pide solo el valor o también hace algo de la aritmética. Quiero que la división entre 100 la haga el backend y que el frontend solo le pase el número. Cómo compruebo en un test del reducer que la llamada a la API recibe lo que corresponde?"
