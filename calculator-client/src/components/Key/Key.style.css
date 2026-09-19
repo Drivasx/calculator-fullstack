@@ -1,0 +1,76 @@
+.key {
+  --key-bg: #333337;
+  --key-text: #f5f5f7;
+  --key-hover: #46464b;
+
+  appearance: none;
+  border: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--key-text);
+  background: var(--key-bg);
+
+  border-radius: 999px;
+  aspect-ratio: 1;
+  font-size: clamp(1.125rem, 5.5vw, 1.5rem);
+  font-weight: 500;
+
+  display: grid;
+  place-items: center;
+  padding: 0;
+
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background-color 0.15s ease,
+    transform 0.06s ease,
+    filter 0.15s ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.94);
+  filter: brightness(1.15);
+}
+
+.key:focus-visible {
+  outline: 2px solid
+    color-mix(in srgb, var(--key-text) 70%, transparent);
+  outline-offset: 2px;
+}
+
+.key:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.key--function {
+  --key-bg: #5a5a60;
+  --key-text: #f5f5f7;
+  --key-hover: #6d6d73;
+}
+
+.key--operator {
+  --key-bg: #ff9f0a;
+  --key-text: #ffffff;
+  --key-hover: #ffb340;
+}
+
+.key--span-2 {
+  aspect-ratio: auto;
+  width: 100%;
+}
+
+
+
+@media (max-width: 28rem) {
+  .key {
+    font-size: clamp(1rem, 6vw, 1.25rem);
+  }
+}

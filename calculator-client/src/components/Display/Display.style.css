@@ -1,0 +1,41 @@
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  min-height: clamp(4.5rem, 20vw, 6.5rem);
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+  border-radius: clamp(0.75rem, 3vw, 1.25rem);
+  background: var(--calculator-screen);
+  border: 1px solid var(--calculator-border);
+
+  overflow: hidden;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.display__expression {
+  min-height: 1.5em;
+  font-size: clamp(0.875rem, 4vw, 1.125rem);
+  color: var(--calculator-screen-text-dim);
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+.display__value {
+  font-size: clamp(2.25rem, 12vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--calculator-screen-text);
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 28rem) {
+  .display__value {
+    font-size: clamp(1.875rem, 13vw, 2.5rem);
+  }
+}

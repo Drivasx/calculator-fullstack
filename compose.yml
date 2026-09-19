@@ -1,0 +1,21 @@
+services:
+  api:
+    build: ./api-calculadora
+    container_name: calculator-api
+    environment:
+      - GIN_MODE=release
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./calculator-client
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8080/api/v1/calculator}
+    container_name: calculator-client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+    restart: unless-stopped
