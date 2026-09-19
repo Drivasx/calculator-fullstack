@@ -116,13 +116,27 @@ curl -X POST http://localhost:8080/api/v1/calculator/sqrt \
 
 backend:
 
-![](image_2.png)
+![](tests_go.png)
 
 ---
 
 frontend:
 
-![](image.png)
+![](tests_react.png)
+
+---
+
+## Design Decisions
+
+Go + Gin Backend (test requirement). Kept the REST API simple and explicit: one endpoint per operation instead of a single overloaded /calculate route with too many fields. It makes the code much easier to read, test, and validate.
+
+Clean Separation (service / handler / model): Calculation logic stays strictly inside service/ (pure Go, zero Gin dependencies). Handlers only handle request binding and delegation, while models define the JSON contract. This lets us test 100% of the core service logic without spinning up HTTP.
+
+Validation using Pointers + binding:"required": Fields use *float64 so 0 is treated as a valid number, while a missing or null field properly returns a 400 response without throwing nil pointer panics.
+
+Centralized CORS Middleware in Gin: Configured with an explicit whitelist of allowed origins (strictly the frontend app). Avoided using the * wildcard to keep the API secure.
+
+Pure Reducer on the Frontend: All state management—handling digits, decimals, pending operators, chaining, and error states—lives inside src/lib/calculator.ts as pure functions. This allows thorough testing without needing to mount React components.
 
 
 
